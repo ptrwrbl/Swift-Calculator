@@ -27,10 +27,12 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             Text("KALKULATOR")
                 .frame(width: 315, height: 60)
                 .font(.largeTitle)
                 .padding()
+            Spacer()
             
             TextField("result", text: $displayText)
             .frame(width: 315, height: 60)
