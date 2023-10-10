@@ -8,7 +8,27 @@
 import Foundation
 
 struct UIBehaviour {
-    func numberClicked(_ number: String) {
+    var firstParameter: String = ""
+    var secondParameter: String = ""
+    var operatorSymbol: String = ""
+    var output: String = ""
+    var operationChosen: Bool = false
+    
+    func numberClicked(_ clickedNum: String) {
+        var cachedNum: String = operationChosen ? firstParameter : secondParameter
+        
+        if cachedNum != "" && cachedNum != "0" {
+            cachedNum = clickedNum
+        } else {
+            cachedNum.append(clickedNum)
+        }
+        
+        if operationChosen {
+            firstParameter = cachedNum
+        } else {
+            secondParameter = cachedNum
+        }
+
         // displayText = String(from: res)
         // if 0 lub pusty -> res = wartosc przycisku
         // if inna liczba -> res = res * 10 + wartosc przycisku
@@ -16,9 +36,12 @@ struct UIBehaviour {
         // zapisac wynik do displayText
     }
     
-    func operatorClicked(_ operation: String) {
+    func operatorClicked(_ clickedOperator: String) {
         // zapisac znak przycisku w bindingu operator
+        self.operatorSymbol = clickedOperator
+        
         // zmienic wartosc booleana operationChosen
+        self.operationChosen.toggle()
         // przepisac zawartosc first/secondParameter zaleznie od operationChosen do displayText
     }
     
