@@ -9,6 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     @State var displayText: String = ""
+    @State var firstParameter: String = ""
+    @State var secondParameter: String = ""
+    @State var operatorSymbol: String = ""
+    @State var operationChosen: Bool = false
+    
     @State var n1: String = "1"
     @State var n2: String = "2"
     @State var n3: String = "3"
@@ -26,6 +31,7 @@ struct ContentView: View {
     @State var nsin: String = "sin"
     
     var body: some View {
+        var beh = UIBehaviour()
         VStack {
             Spacer()
             Text("KALKULATOR")
@@ -64,7 +70,7 @@ struct ContentView: View {
                 CalculatorButton(title: $nsin)
             }
             
-            Button(action: {}) {
+            Button(action: {beh.calcClicked()}) {
                 Text("OBLICZ")
                     .font(.largeTitle)
             }
